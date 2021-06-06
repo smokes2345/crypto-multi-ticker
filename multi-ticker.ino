@@ -99,7 +99,8 @@ void display_coin_data(String coin) {
   display.setTextSize(2);
   printCenter("$" + value, 0, 25);
   display.setTextSize(1);
-  printCenter(doc[coin]["usd_24h_change"], 0, 55);
+  auto change = doc[coin]["usd_24h_change"].as<String>();
+  printCenter("24hr change: $" + change, 0, 55);
   display.display();
   if (doc[coin]["usd_24h_change"] > 0) {
     digitalWrite(upLED, HIGH);
