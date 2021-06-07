@@ -1,3 +1,8 @@
+/*
+ * Multi-ticker
+ * based on coingecko api https://www.coingecko.com/api
+ * Licensed under GPLv3
+ */
 #include <Adafruit_SSD1306.h>                                                 //Include the required libraries
 #include <WiFi.h>
 #include <Wire.h>
@@ -14,14 +19,25 @@
 #define downLED 12
 Adafruit_SSD1306 display (SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);    //Create the display object
 
+
+/*
+ * Settings
+ */
+ 
 const char* ssid = "dd-wrt";                                            //Set your WiFi network name and password
 const char* password = "buffaloroam";
+const char* coins[] = {"ethereum","ripple", "dogecoin","bitcoin"};
+
+
+/*
+ * DO NOT EDIT BELOW HERE
+ */
 
 WiFiClient client;                                                            //Create a new WiFi client
 HTTPClient http;
 
 const char* url = "https://api.coingecko.com/api/v3/simple/price?vs_currencies=usd&include_24hr_change=true&ids=";
-const char* coins[] = {"ethereum","ripple", "dogecoin","bitcoin"};
+
 
 void setup() {
   // put your setup code here, to run once:
